@@ -1,6 +1,6 @@
 // Canvas setup
-const canvas = document.getElementById('canvas1');
-const ctx = canvas.getContext('2d');
+var canvas = document.getElementById('canvas1');
+var ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let particleArray = [];  //Holds all randomized particle objects and to use to draw particles.
@@ -31,14 +31,14 @@ class Particle {
         this.size = size;
         this.color = color;
         this.weight = weight;
-    };
+    }
 
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
         ctx.fillStyle = this.color;
         ctx.fill();
-    };
+    }
     
     update() {
         this.size -= 0.05;
@@ -48,13 +48,13 @@ class Particle {
             this.size = (Math.random() * 10) + 2;
             this.weight = (Math.random() * 2) - 0.5;
         }
-        this.y += this.weight;
+        this.y += this.weight; // This changes the y position of Particle based on weight.
         this.weight += 0.2;
 
         if (this.y > canvas.height - this.size) {
             this.weight *= -1;        
-        };
-    };
+        } // If the y position hits the floor of the canvas, weight will be reduced to create bouncing effect.
+    }
 };
 
 function init() {
@@ -63,7 +63,7 @@ function init() {
         let x = Math.random() * canvas.width;
         let y = Math.random() * canvas.height;
         let size = (Math.random() * 5) + 2;
-        let color = 'black';
+        let color = '#000000';
         let weight = 1;
         particleArray.push(new Particle(x, y, size, color, weight));
     };
@@ -71,10 +71,10 @@ function init() {
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < particleArray; i++) {
+    for (let i = 0; i < particleArray.length; i++) {
         particleArray[i].update();
         particleArray[i].draw();
-    };
+    }
     requestAnimationFrame(animate);
 };
 
