@@ -28,3 +28,13 @@
     filter: url("#goo");
     background: url(https://i.pinimg.com/originals/fc/64/c4/fc64c42d1810f615a3c27a8fed0b4bb2.png) no-repeat right;
 }
+
+#canvas4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background: url(https://i.pinimg.com/736x/11/b7/bd/11b7bd92b6c106cdf5e359a750cdddd5--yayoi-kusama-yohji-yamamoto.jpg) no-repeat right;
+}
